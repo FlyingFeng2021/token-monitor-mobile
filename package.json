@@ -1,0 +1,25 @@
+{
+  "name": "token-monitor-android",
+  "version": "0.77.0",
+  "description": "Token Monitor — Android (Capacitor) port: hub sync client & dashboard for Javis603/token-monitor",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "sync": "cap sync android",
+    "test:bridge": "node scripts/test-bridge-modules.cjs",
+    "open:android": "cap open android"
+  },
+  "dependencies": {
+    "@capacitor/android": "8.5.3",
+    "@capacitor/app": "8.1.2",
+    "@capacitor/browser": "8.0.4",
+    "@capacitor/cli": "8.5.3",
+    "@capacitor/core": "8.5.3",
+    "@capacitor/filesystem": "8.1.5",
+    "@capacitor/local-notifications": "8.3.1",
+    "@capacitor/status-bar": "8.0.4"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^25.16.0"
+  }
+}

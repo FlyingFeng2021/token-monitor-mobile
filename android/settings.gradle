@@ -1,0 +1,19 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+
+plugins {
+    // Capacitor 8 的 Android 库要求 Java 21 工具链：本机只有低版本 JDK 时
+    // 由 Gradle 自动下载匹配工具链（CI 已装 JDK 21，此处是本地构建的兜底）。
+    id "org.gradle.toolchains.foojay-resolver-convention" version "0.8.0"
+}
+
+include ':app'
+include ':capacitor-cordova-android-plugins'
+project(':capacitor-cordova-android-plugins').projectDir = new File('./capacitor-cordova-android-plugins/')
+
+apply from: 'capacitor.settings.gradle'

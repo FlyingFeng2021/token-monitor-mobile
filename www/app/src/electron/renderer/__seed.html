@@ -1,0 +1,20 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>seed</title></head>
+<body>
+<script>
+  // QA harness: ?hub=<url>&secret=<secret> 写入连接配置后重定向（只保留视图参数）
+  (function () {
+    var q = new URLSearchParams(location.search);
+    if (q.has('hub')) {
+      localStorage.setItem('token-monitor:settings.json', JSON.stringify({
+        hubUrl: q.get('hub'),
+        secret: q.get('secret') || '',
+        refreshMs: 5000
+      }));
+    }
+    var next = new URLSearchParams();
+    ['breakdown', 'period'].forEach(function (k) { if (q.has(k)) next.set(k, q.get(k)); });
+    location.replace('index.html' + (next.toString() ? '?' + next.toString() : ''));
+  })();
+</script>
+</body></html>

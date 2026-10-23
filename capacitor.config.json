@@ -1,0 +1,11 @@
+{
+  "appId": "com.javis.tokenmonitor",
+  "appName": "Token Monitor",
+  "webDir": "www",
+  "android": {
+    "allowMixedContent": true
+  },
+  "server": {
+    "androidScheme": "http"
+  }
+}

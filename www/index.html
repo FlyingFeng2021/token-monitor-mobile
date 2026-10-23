@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Token Monitor</title>
+    <!--
+      Capacitor 入口。原版渲染层 index.html 必须保持在 src/electron/renderer/
+      目录深度，其 88 个脚本的相对路径（../../shared/...）才能原样工作——
+      因此入口页只做无痕重定向（保留 query 参数）。
+    -->
+    <script>
+      location.replace('app/src/electron/renderer/index.html' + window.location.search);
+    </script>
+    <meta http-equiv="refresh" content="0; url=app/src/electron/renderer/index.html" />
+  </head>
+  <body>
+    <a href="app/src/electron/renderer/index.html">Token Monitor</a>
+  </body>
+</html>
