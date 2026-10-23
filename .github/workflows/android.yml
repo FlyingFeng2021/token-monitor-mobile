@@ -54,6 +54,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Sync Capacitor (regenerate cordova plugin project + copy web assets)
+        run: npx cap sync android
+
       - name: Build debug APK
         env:
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}

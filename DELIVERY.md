@@ -18,8 +18,15 @@ git remote add origin git@github.com:<你的用户名>/<仓库名>.git
 git push -u origin master        # 或 main
 ```
 
-推送后自动流程：`npm ci` → JDK 21 → Android SDK → `assembleDebug` + `assembleRelease` →
+**云端仓库（已建好）：https://github.com/FlyingFeng2021/token-monitor-mobile**
+
+推送后自动流程：`npm ci` → JDK 21 → Android SDK（runner 预装）→ `assembleDebug` + `assembleRelease` →
 **APK 出现在 Actions 运行页的 Artifacts**（`Token-Monitor-debug` / `Token-Monitor-release`）。
+`v*` 标签会把两个 APK 直附到 **Releases 页**（公开、手机浏览器免登录直接下载）。
+
+> 本机 git 直连 github.com 被墙时的推送通道：`node scripts/github-push-api.cjs
+> FlyingFeng2021/token-monitor-mobile main "<commit message>" [tag]`
+> （走 api.github.com 的 Git Data API，支持断点续传；首次前先 `git add -A`。）
 
 - 手动触发：Actions 页 → Android APK → Run workflow
 - 发版：`git tag v0.77.0 && git push origin v0.77.0` → APK 自动附到 GitHub Release
@@ -104,6 +111,7 @@ build-apk.cmd
 | 现象 | 原因与处置 |
 |---|---|
 | 一直"未连接/连接失败" | ① 手机与 PC 不在同一网段（公司/校园 WiFi 常有 AP 隔离，可试手机热点）② 防火墙未放行 17321（见第 3 节命令）③ IP 填错（PC 上 `ipconfig` 核对）④ Secret 不一致 ⑤ URL 末尾不要带 `/api` 或路径 |
+| **Secret 填了就是 401** | **等宽字体里 `l`（小写 L）与 `1`（数字 1）几乎不可分辨**——实测踩坑：截图抄写极易抄错。务必用桌面端密钥框右侧的**复制按钮**，手机上粘贴，绝不手敲 |
 | 云中继返回 503 `secret_required` | Worker 端未配置 secret 或手机端 secret 填错 |
 | 连上但数据为 0 | 桌面端采集未运行（打开桌面 App 或 `npm run agent`）；或刚连接，等一个刷新周期（默认 15s 轮询兜底） |
 | 额度（Limits）面板空 | 配额需在**桌面端**登录对应账号，手机端经 hub 只读同步展示 |
