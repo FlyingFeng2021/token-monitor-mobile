@@ -1,0 +1,19 @@
+{
+  "message": "Repository rule violations found\n\nSecret detected in content\n\n",
+  "metadata": {
+    "secret_scanning": {
+      "bypass_placeholders": [
+        {
+          "placeholder_id": "3L4zbuLluKa31VNngNZmpX45uaf",
+          "token_type": "GOOGLE_OAUTH_CLIENT_ID"
+        },
+        {
+          "placeholder_id": "3L4zbtSq4kzeqMajEL9gy5UFVuz",
+          "token_type": "GOOGLE_OAUTH_CLIENT_SECRET"
+        }
+      ]
+    }
+  },
+  "documentation_url": "https://docs.github.com/rest/git/blobs#create-a-blob",
+  "status": "422"
+}

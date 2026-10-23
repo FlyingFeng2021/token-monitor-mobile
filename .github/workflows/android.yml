@@ -38,9 +38,8 @@ jobs:
           java-version: 21
           cache: gradle
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-
+      # ubuntu runner 自带 Android SDK 且许可已接受；缺失组件由 Gradle 自动安装
+      # （android-actions/setup-android@v3 的许可步骤在预装 SDK 上会间歇性失败，故不使用）
       - name: Restore signing keystore
         uses: actions/cache@v4
         with:
